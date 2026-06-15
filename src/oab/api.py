@@ -19,6 +19,7 @@ Env:
   OAB_CORS_ORIGINS     comma list; default "*" (public read-only demo)
   OAB_DEEPSEEK_KEY     real compile model
   OAB_HUBSPOT_TOKEN    real sandbox provisioning target
+  OAB_MAX_INTAKE_CHARS hard input cap (default 20000) — bounds per-request LLM cost
 """
 import os, sys, time, threading
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
@@ -42,6 +43,11 @@ except Exception:                      # importable without fastapi (tests/CLI)
 
 MODE = os.environ.get("OAB_MODE", "demo").lower()
 PORT = int(os.environ.get("OAB_PORT", "8008"))
+
+# Hard input cap (contract §4 / elevation #5: token cap on a public, server-side-keyed
+# endpoint). An intake is a SOW/discovery transcript; 20k chars (~5k tokens) is generous
+# for that and bounds the per-request DeepSeek cost a caller can force. Tunable via env.
+MAX_INTAKE_CHARS = int(os.environ.get("OAB_MAX_INTAKE_CHARS", "20000"))
 
 
 def _adapter():
@@ -72,6 +78,16 @@ def _require_real_if_live():
             status_code=503,
             detail=f"live mode requires real providers, got {eng['llm']}/{eng['sandbox']}. "
                    f"Set OAB_DEEPSEEK_KEY + OAB_HUBSPOT_TOKEN.")
+
+
+def _guard(req):
+    """Per-request gate for every mutating/LLM endpoint: enforce the hard input cap
+    BEFORE any LLM call (bounds cost/abuse), then the live-mode real-provider rule."""
+    if len(req.intake) > MAX_INTAKE_CHARS:
+        raise HTTPException(
+            status_code=413,
+            detail=f"intake too large: {len(req.intake)} chars > {MAX_INTAKE_CHARS} cap")
+    _require_real_if_live()
 
 
 # --- minimal in-memory rate limiter (contract §4: rate-limit public demo routes) ---
@@ -139,7 +155,7 @@ if FastAPI:
 
     @app.post("/compile")
     def compile_ep(req: IntakeReq):
-        _require_real_if_live()
+        _guard(req)
         d = compile_engineered(req.intake)
         return {"customer": d.customer,
                 "objects": [o.__dict__ for o in d.objects],
@@ -149,7 +165,7 @@ if FastAPI:
 
     @app.post("/plan")
     def plan_ep(req: IntakeReq):
-        _require_real_if_live()
+        _guard(req)
         d = compile_engineered(req.intake)
         actions = make_plan(d, _SANDBOX.list_objects())
         diff, counts = render_diff(actions, d.customer)
@@ -158,7 +174,7 @@ if FastAPI:
 
     @app.post("/apply")
     def apply_ep(req: IntakeReq):
-        _require_real_if_live()
+        _guard(req)
         if not req.approve:
             raise HTTPException(status_code=412,
                                 detail="approval required: nothing mutates until approve=true")
@@ -170,7 +186,7 @@ if FastAPI:
 
     @app.post("/reconcile")
     def reconcile_ep(req: IntakeReq):
-        _require_real_if_live()
+        _guard(req)
         d = compile_engineered(req.intake)
         r = do_reconcile(d, _SANDBOX)
         return {"parity": r.parity, "missing": r.missing, "drifted": r.drifted,
@@ -178,6 +194,6 @@ if FastAPI:
 
     @app.post("/runbook")
     def runbook_ep(req: IntakeReq):
-        _require_real_if_live()
+        _guard(req)
         d = compile_engineered(req.intake)
         return {"runbook_md": generate_runbook(d, _SANDBOX), "engine": _engine()}

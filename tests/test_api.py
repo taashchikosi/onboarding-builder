@@ -45,3 +45,13 @@ def test_apply_requires_explicit_approval():
 def test_health_does_not_require_llm_in_demo():
     c, _ = _client("demo")
     assert c.get("/health").status_code == 200
+
+
+def test_oversized_intake_is_capped_before_any_llm_call():
+    c, api = _client("demo")
+    over = "x" * (api.MAX_INTAKE_CHARS + 1)
+    r = c.post("/plan", json={"intake": over})
+    assert r.status_code == 413               # hard token cap: rejected before compile/LLM
+    assert "too large" in r.json()["detail"]
+    # a normal-sized intake still passes the gate
+    assert c.post("/plan", json={"intake": "Customer: X\nPipelines:\n- P: a, b"}).status_code == 200
