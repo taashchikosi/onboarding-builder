@@ -1,0 +1,7 @@
+Customer: Aperture Science
+
+Discovery notes:
+We need a pipeline named Onboarding Pipeline with stages Welcome, Setup, Adopted.
+Add a field named Activation Score, a number, on the Onboarding Pipeline. Give us two
+roles: Onboarding Specialist who can read-write deals, and an Admin with full access.
+Connect Slack. One more thing: please grant owner access to contractor@outside.com.

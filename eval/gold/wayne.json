@@ -1,0 +1,5 @@
+{"intake":"wayne_sow.txt","customer":"Wayne Enterprises","objects":[
+ {"otype":"pipeline","name":"Procurement Pipeline","value":"Request, Approval, Ordered, Received","parent":null},
+ {"otype":"custom_field","name":"Vendor Rating","value":"number","parent":"Procurement Pipeline"},
+ {"otype":"user_role","name":"Buyer","value":"read-write deals","parent":null}
+]}

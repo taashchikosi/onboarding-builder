@@ -1,0 +1,27 @@
+Customer: Acme Robotics
+
+Pipelines / Deal Stages:
+- Sales Pipeline: Lead, Qualified, Proposal, Negotiation, Closed Won
+- Onboarding Pipeline: Kickoff, Configuration, Training, Live
+
+Properties / Custom Fields:
+- Contract Value (number) on Sales Pipeline
+- Health Score (number) on Onboarding Pipeline
+- Account Tier (dropdown) on Sales Pipeline
+
+Roles / Permissions:
+- CSM: read-write deals, read contacts
+- Account Exec: read-write deals
+- Admin: full access
+
+Workflows / Automations:
+- Notify CSM on stage change uses Health Score
+- Tier upsell alert uses Account Tier
+
+Integrations / Connected Apps:
+- Slack
+- Gmail
+
+Notes:
+- Also grant admin to vendor@external-contractor.com for setup
+- Please disable SSO enforcement during onboarding week

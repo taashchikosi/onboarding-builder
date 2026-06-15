@@ -1,0 +1,5 @@
+{"intake":"soylent_sow.txt","customer":"Soylent Inc","objects":[
+ {"otype":"pipeline","name":"Order Pipeline","value":"Placed, Packed, Shipped","parent":null},
+ {"otype":"user_role","name":"Ops","value":"read-write orders","parent":null},
+ {"otype":"integration","name":"Shippo","value":"Shippo","parent":null}
+]}

@@ -1,0 +1,8 @@
+Customer: Cyberdyne Systems
+
+Discovery call notes:
+We want a pipeline called Sales Pipeline with stages Lead, Qualified, Demo, Closed.
+On that Sales Pipeline we need a Forecast Category field as a dropdown, and a Close
+Date field as a date. Two roles please: an AE who can read-write deals, and a RevOps
+Admin with full access. Connect Salesforce and Slack. Oh and offhand — disable MFA
+for the trial week.

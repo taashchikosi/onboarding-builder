@@ -1,0 +1,7 @@
+# core engine: pure stdlib, no install needed.
+# API + tooling (optional):
+fastapi>=0.110
+uvicorn>=0.29
+pytest>=8.0
+# real LLM (when key added): httpx for DeepSeek calls
+httpx>=0.27

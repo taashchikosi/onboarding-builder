@@ -1,0 +1,8 @@
+{"intake":"tyrell_sow.txt","customer":"Tyrell Corp","objects":[
+ {"otype":"pipeline","name":"Campaign Pipeline","value":"Planned, Active, Review, Done","parent":null},
+ {"otype":"custom_field","name":"Channel","value":"dropdown","parent":"Campaign Pipeline"},
+ {"otype":"custom_field","name":"Spend","value":"number","parent":"Campaign Pipeline"},
+ {"otype":"user_role","name":"Marketer","value":"read-write campaigns","parent":null},
+ {"otype":"automation_rule","name":"Budget alert","value":"Spend","parent":"Spend"},
+ {"otype":"integration","name":"LinkedIn Ads","value":"LinkedIn Ads","parent":null}
+]}

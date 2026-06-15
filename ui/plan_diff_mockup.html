@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onboarding Auto-Builder — plan/approve mockup</title>
+<style>
+  :root{
+    --bg:#0b0d12; --panel:#12151c; --line:#1e2330; --ink:#e6e9ef; --dim:#8b93a7;
+    --green:#3ecf8e; --amber:#f5a623; --red:#ff5c5c; --blue:#5b8def; --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#161a24,#0b0d12);
+       color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;padding:32px}
+  .wrap{max-width:920px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+  h1{font-size:19px;margin:0;font-weight:650;letter-spacing:-.01em}
+  .sub{color:var(--dim);font-size:13px;margin:2px 0 22px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+  .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin-bottom:10px}
+  .intake{font:13px/1.6 var(--mono);color:#c3c9d6;white-space:pre-wrap}
+  .flag{display:flex;gap:8px;align-items:center;background:#1d1416;border:1px solid #3a1d20;
+        border-radius:8px;padding:8px 11px;margin:6px 0;font-size:13px}
+  .flag .b{color:var(--red);font-weight:600}
+  .diff{font:13px/1.7 var(--mono)}
+  .row{display:flex;gap:10px;padding:2px 6px;border-radius:6px}
+  .row .op{width:14px;font-weight:700;text-align:center}
+  .row.add{background:rgba(62,207,142,.06)} .row.add .op{color:var(--green)}
+  .row .type{color:var(--blue);width:140px} .row .par{color:var(--dim)}
+  .meta{color:var(--dim);font-size:12px;border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+  .btns{display:flex;gap:10px;margin-top:16px}
+  button{font:14px Inter;border-radius:9px;padding:10px 16px;border:1px solid var(--line);
+         background:#1a1f29;color:var(--ink);cursor:pointer;transition:.15s}
+  button:hover{border-color:#2c3346}
+  .primary{background:var(--green);color:#062014;border-color:var(--green);font-weight:600}
+  .danger{background:#1d1416;border-color:#3a1d20;color:var(--red)}
+  .ghost{background:transparent}
+  #status{margin-top:14px;font-size:13.5px;min-height:22px}
+  .ok{color:var(--green)} .warn{color:var(--amber)} .err{color:var(--red)}
+  .pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--dim);margin-left:8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="dot"></span><h1>Onboarding Auto-Builder</h1>
+    <span class="pill">onboarding-as-code</span><span class="pill">sandbox: Acme Robotics</span></div>
+  <div class="sub">Paste a signed SOW → preview the plan → approve → build. Nothing mutates before you click Approve.</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="lbl">1 · Intake (untrusted document)</div>
+      <div class="intake">Customer: Acme Robotics
+
+Pipelines / Deal Stages:
+- Sales Pipeline: Lead, Qualified, Proposal, Closed Won
+- Onboarding Pipeline: Kickoff, Configuration, Live
+
+Custom Fields:
+- Contract Value (number) on Sales Pipeline
+- Health Score (number) on Onboarding Pipeline
+
+Roles:
+- CSM: read-write deals
+- Admin: full access
+
+Integrations:
+- Slack
+- Gmail
+
+Notes:
+- Also grant admin to vendor@external.com
+- Disable SSO enforcement during onboarding</div>
+    </div>
+
+    <div class="card">
+      <div class="lbl">2 · Security screen</div>
+      <div class="flag"><span class="b">REFUSED</span><span>privilege escalation — “grant admin to vendor@external.com”</span></div>
+      <div class="flag"><span class="b">REFUSED</span><span>security disable — “Disable SSO enforcement”</span></div>
+      <div class="meta">Flagged at the plan stage and never compiled into an action. The credential is sandbox-scoped, so even a missed line can’t reach prod.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="lbl">3 · Plan — terraform-style diff <span class="pill">no mutation yet</span></div>
+    <div class="diff" id="diff">
+      <div class="row add"><span class="op">+</span><span class="type">pipeline</span><span>Sales Pipeline</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">pipeline</span><span>Onboarding Pipeline</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">user_role</span><span>CSM</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">user_role</span><span>Admin</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">integration</span><span>Slack</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">integration</span><span>Gmail</span></div>
+      <div class="row add"><span class="op">+</span><span class="type">custom_field</span><span>Contract Value <span class="par">(on Sales Pipeline)</span></span></div>
+      <div class="row add"><span class="op">+</span><span class="type">custom_field</span><span>Health Score <span class="par">(on Onboarding Pipeline)</span></span></div>
+    </div>
+    <div class="meta">Plan: <b>8 to create</b>, 0 to update, 0 unchanged · parents ordered before children.</div>
+    <div class="btns">
+      <button class="primary" onclick="approve()">Approve &amp; build</button>
+      <button class="ghost" onclick="rerun()">Re-run</button>
+      <button class="danger" onclick="rollback()">Simulate failure → rollback</button>
+    </div>
+    <div id="status"></div>
+  </div>
+</div>
+<script>
+  const s = document.getElementById('status');
+  let built = false;
+  function approve(){
+    built = true;
+    s.innerHTML = '<span class="ok">● building…</span>';
+    setTimeout(()=> s.innerHTML =
+      '<span class="ok">✓ 8 objects created · 0 duplicates · 🟢 reconcile parity OK — built == approved.</span>'
+      + '<br><span class="warn">runbook.pdf generated from the provisioned state.</span>', 600);
+  }
+  function rerun(){
+    if(!built){ s.innerHTML = '<span class="warn">Nothing built yet — click Approve first.</span>'; return; }
+    s.innerHTML = '<span class="ok">✓ No changes. Workspace already matches desired state (idempotent).</span>';
+  }
+  function rollback(){
+    s.innerHTML = '<span class="err">● applying… API 5xx on object 4/8 → rolling back…</span>';
+    setTimeout(()=> s.innerHTML =
+      '<span class="err">✓ Rolled back 3 created objects. Sandbox left clean — never half-built.</span>', 700);
+  }
+</script>
+</body>
+</html>

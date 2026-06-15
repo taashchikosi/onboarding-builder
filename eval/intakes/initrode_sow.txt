@@ -1,0 +1,18 @@
+Customer: Initrode
+
+Pipelines:
+- Support Pipeline: New, Triage, In Progress, Resolved
+
+Custom Fields:
+- Priority (dropdown) on Support Pipeline
+- SLA Breach (boolean) on Support Pipeline
+
+Roles:
+- Agent: read-write tickets
+- Team Lead: full access
+
+Automations:
+- Escalate on SLA Breach uses SLA Breach
+
+Integrations:
+- Slack

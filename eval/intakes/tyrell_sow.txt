@@ -1,0 +1,17 @@
+Customer: Tyrell Corp
+
+Pipelines:
+- Campaign Pipeline: Planned, Active, Review, Done
+
+Custom Fields:
+- Channel (dropdown) on Campaign Pipeline
+- Spend (number) on Campaign Pipeline
+
+Roles:
+- Marketer: read-write campaigns
+
+Automations:
+- Budget alert uses Spend
+
+Integrations:
+- LinkedIn Ads

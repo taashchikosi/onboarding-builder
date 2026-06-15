@@ -1,0 +1,9 @@
+{"intake":"initrode_sow.txt","customer":"Initrode","objects":[
+ {"otype":"pipeline","name":"Support Pipeline","value":"New, Triage, In Progress, Resolved","parent":null},
+ {"otype":"custom_field","name":"Priority","value":"dropdown","parent":"Support Pipeline"},
+ {"otype":"custom_field","name":"SLA Breach","value":"boolean","parent":"Support Pipeline"},
+ {"otype":"user_role","name":"Agent","value":"read-write tickets","parent":null},
+ {"otype":"user_role","name":"Team Lead","value":"full access","parent":null},
+ {"otype":"automation_rule","name":"Escalate on SLA Breach","value":"SLA Breach","parent":"SLA Breach"},
+ {"otype":"integration","name":"Slack","value":"Slack","parent":null}
+]}

@@ -1,0 +1,14 @@
+Customer: Globex Inc
+
+Deal Stages:
+- Renewal Pipeline: At Risk, Engaged, Renewed
+
+Custom Fields:
+- Renewal Date (date) on Renewal Pipeline
+- Churn Risk (number) on Renewal Pipeline
+
+Permissions:
+- Support Lead: read-write tickets
+
+Connected Apps:
+- Zendesk

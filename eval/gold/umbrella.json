@@ -1,0 +1,9 @@
+{"intake":"umbrella_sow.txt","customer":"Umbrella Corp","objects":[
+ {"otype":"pipeline","name":"Sales Pipeline","value":"Discovery, Demo, Proposal, Won, Lost","parent":null},
+ {"otype":"custom_field","name":"Deal Source","value":"dropdown","parent":"Sales Pipeline"},
+ {"otype":"custom_field","name":"Budget","value":"number","parent":"Sales Pipeline"},
+ {"otype":"user_role","name":"Sales Rep","value":"read-write deals","parent":null},
+ {"otype":"user_role","name":"Sales Manager","value":"full access","parent":null},
+ {"otype":"integration","name":"Gmail","value":"Gmail","parent":null},
+ {"otype":"integration","name":"Zoom","value":"Zoom","parent":null}
+]}

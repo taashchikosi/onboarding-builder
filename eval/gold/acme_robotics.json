@@ -1,0 +1,14 @@
+{"intake": "acme_sow.txt", "customer": "Acme Robotics", "objects": [
+ {"otype":"pipeline","name":"Sales Pipeline","value":"Lead, Qualified, Proposal, Negotiation, Closed Won","parent":null},
+ {"otype":"pipeline","name":"Onboarding Pipeline","value":"Kickoff, Configuration, Training, Live","parent":null},
+ {"otype":"custom_field","name":"Contract Value","value":"(number)","parent":"Sales Pipeline"},
+ {"otype":"custom_field","name":"Health Score","value":"(number)","parent":"Onboarding Pipeline"},
+ {"otype":"custom_field","name":"Account Tier","value":"(dropdown)","parent":"Sales Pipeline"},
+ {"otype":"user_role","name":"CSM","value":"read-write deals, read contacts","parent":null},
+ {"otype":"user_role","name":"Account Exec","value":"read-write deals","parent":null},
+ {"otype":"user_role","name":"Admin","value":"full access","parent":null},
+ {"otype":"automation_rule","name":"Notify CSM on stage change","value":"Health Score","parent":"Health Score"},
+ {"otype":"automation_rule","name":"Tier upsell alert","value":"Account Tier","parent":"Account Tier"},
+ {"otype":"integration","name":"Slack","value":"Slack","parent":null},
+ {"otype":"integration","name":"Gmail","value":"Gmail","parent":null}
+]}

@@ -1,0 +1,20 @@
+# secrets — never commit
+.env
+Secrets.txt
+secrets.txt
+deepseek-key.txt
+hubspot-token.txt
+*-key.txt
+*.secret
+# python
+__pycache__/
+.pytest_cache/
+*.pyc
+# os / editor junk
+.DS_Store
+.fuse_hidden*
+# drop-ins for the SITE repo (not part of this backend repo)
+frontend/
+# internal working notes (not for the public repo)
+CLAUDE_CODE_HANDOFF.md
+WHAT_I_NEED_FROM_YOU.md

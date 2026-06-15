@@ -1,0 +1,8 @@
+{"intake": "initech_sow.txt", "customer": "Initech", "objects": [
+ {"otype":"pipeline","name":"Implementation Pipeline","value":"Scoping, Build, UAT, Live","parent":null},
+ {"otype":"custom_field","name":"Go-Live Date","value":"(date)","parent":"Implementation Pipeline"},
+ {"otype":"custom_field","name":"Risk Flag","value":"(dropdown)","parent":"Implementation Pipeline"},
+ {"otype":"user_role","name":"Project Manager","value":"full access","parent":null},
+ {"otype":"automation_rule","name":"Escalate overdue go-live","value":"Go-Live Date","parent":"Go-Live Date"},
+ {"otype":"integration","name":"Jira","value":"Jira","parent":null}
+]}

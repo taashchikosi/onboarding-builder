@@ -1,0 +1,9 @@
+{"intake":"cyberdyne_sow.txt","customer":"Cyberdyne Systems","objects":[
+ {"otype":"pipeline","name":"Sales Pipeline","value":"Lead, Qualified, Demo, Closed","parent":null},
+ {"otype":"custom_field","name":"Forecast Category","value":"dropdown","parent":"Sales Pipeline"},
+ {"otype":"custom_field","name":"Close Date","value":"date","parent":"Sales Pipeline"},
+ {"otype":"user_role","name":"AE","value":"read-write deals","parent":null},
+ {"otype":"user_role","name":"RevOps Admin","value":"full access","parent":null},
+ {"otype":"integration","name":"Salesforce","value":"Salesforce","parent":null},
+ {"otype":"integration","name":"Slack","value":"Slack","parent":null}
+]}

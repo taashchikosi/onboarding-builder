@@ -1,0 +1,16 @@
+Customer: Umbrella Corp
+
+Deal Stages:
+- Sales Pipeline: Discovery, Demo, Proposal, Won, Lost
+
+Properties:
+- Deal Source (dropdown) on Sales Pipeline
+- Budget (number) on Sales Pipeline
+
+Permissions:
+- Sales Rep: read-write deals
+- Sales Manager: full access
+
+Connected Apps:
+- Gmail
+- Zoom

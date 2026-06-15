@@ -1,0 +1,10 @@
+Customer: Soylent Inc
+
+Pipelines:
+- Order Pipeline: Placed, Packed, Shipped
+
+Roles:
+- Ops: read-write orders
+
+Integrations:
+- Shippo

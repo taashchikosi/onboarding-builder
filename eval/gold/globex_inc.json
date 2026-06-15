@@ -1,0 +1,7 @@
+{"intake": "globex_sow.txt", "customer": "Globex Inc", "objects": [
+ {"otype":"pipeline","name":"Renewal Pipeline","value":"At Risk, Engaged, Renewed","parent":null},
+ {"otype":"custom_field","name":"Renewal Date","value":"(date)","parent":"Renewal Pipeline"},
+ {"otype":"custom_field","name":"Churn Risk","value":"(number)","parent":"Renewal Pipeline"},
+ {"otype":"user_role","name":"Support Lead","value":"read-write tickets","parent":null},
+ {"otype":"integration","name":"Zendesk","value":"Zendesk","parent":null}
+]}

@@ -1,0 +1,17 @@
+Customer: Initech
+
+Pipelines:
+- Implementation Pipeline: Scoping, Build, UAT, Live
+
+Properties:
+- Go-Live Date (date) on Implementation Pipeline
+- Risk Flag (dropdown)
+
+Roles:
+- Project Manager: full access
+
+Automations:
+- Escalate overdue go-live uses Go-Live Date
+
+Integrations:
+- Jira

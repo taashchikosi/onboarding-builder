@@ -1,0 +1,12 @@
+# Add this service to the shared VPS docker-compose (alongside RetrofitGPT,
+# AuditAgent, LeadTriage, P02, P04...). Caddy reverse-proxies /onboarding-builder.
+# No new bill: another container on the already-paid Hetzner CX43.
+services:
+  onboarding-builder:
+    build: ./onboarding-builder
+    environment:
+      - OAB_DEEPSEEK_KEY=${OAB_DEEPSEEK_KEY}     # compile LLM (swappable)
+      - OAB_HUBSPOT_TOKEN=${OAB_HUBSPOT_TOKEN}   # SANDBOX-scoped, least-priv
+    restart: unless-stopped
+    expose:
+      - "8000"

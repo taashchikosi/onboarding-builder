@@ -1,0 +1,7 @@
+{"intake":"aperture_sow.txt","customer":"Aperture Science","objects":[
+ {"otype":"pipeline","name":"Onboarding Pipeline","value":"Welcome, Setup, Adopted","parent":null},
+ {"otype":"custom_field","name":"Activation Score","value":"number","parent":"Onboarding Pipeline"},
+ {"otype":"user_role","name":"Onboarding Specialist","value":"read-write deals","parent":null},
+ {"otype":"user_role","name":"Admin","value":"full access","parent":null},
+ {"otype":"integration","name":"Slack","value":"Slack","parent":null}
+]}
